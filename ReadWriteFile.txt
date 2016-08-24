@@ -1,0 +1,70 @@
+
+// READ a csv file form desktop and write the file back to desktop on text version 
+
+
+package readfile;
+
+import java.util.*;
+import java.io.*;
+
+public class readfile {
+	
+
+    public static void main(String[] args){
+		try{
+			
+			String mynewfile = "/Users/Addytheriot/Desktop/test1mysql.csv";
+			BufferedReader br = new BufferedReader(new FileReader(mynewfile));
+			String line = "";
+			StringTokenizer st= null;
+			int tokenNumber = 0;
+			
+			while((line=br.readLine())!=null){
+				st = new StringTokenizer(line,"");
+				
+				while(st.hasMoreTokens()){
+					tokenNumber++;
+					String nextst = st.nextToken();
+					System.out.println(nextst);
+				}
+				tokenNumber = 0;
+			}
+			br.close();
+			}
+			
+			catch(Exception e){
+				System.out.println("cannot read file"+e);
+			}
+		    
+            try{
+			
+			String mynewfile = "/Users/Addytheriot/Desktop/test1mysql.csv";
+			String mynewline = "";
+			int tokenNumber = 0;
+			StringTokenizer st= null;
+			String myconvertedfile = "/Users/Addytheriot/Desktop/empty1.csv";
+			BufferedReader brnewf = new BufferedReader(new FileReader(mynewfile));
+			BufferedWriter bwnewf = new BufferedWriter(new FileWriter(myconvertedfile));
+			
+			while((mynewline=brnewf.readLine())!=null){
+				st = new StringTokenizer(mynewline,"");
+			while(st.hasMoreTokens()){
+				tokenNumber++;
+				bwnewf.write(st.nextToken());
+				bwnewf.newLine();
+			}
+			tokenNumber = 0;
+			}
+			brnewf.close();
+			bwnewf.close();
+
+			}
+			
+			catch(Exception e){
+				System.out.println("cannot read file"+e);
+			}
+		
+	}
+	
+
+}
